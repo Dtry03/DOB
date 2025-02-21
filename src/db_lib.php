@@ -142,7 +142,7 @@ function executeDMLStmt($conn,$sql,$params){
     
     } catch (\PDOException $e) {
 
-        echo "error al actuañizar los datos";
+        echo "error al actualizar los datos";
         throw new \RuntimeException("Error al e la conexión con la base de datos");
     }
 
