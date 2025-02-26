@@ -397,21 +397,36 @@ body{
     gap: 30px;
 }
 
-.group input{
+.group input, .group select,.group select option, .group label{
 
    padding: 20px  15px;
    outline: none;
    width: inherit;
    border:1px solid gray;
+   box-sizing: content-box;
    
 }
 
+ .group label .sendMessage{
+    padding: 10px 10px;
+ }
+ 
+ .group label{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 15px  15px;
+ }
  .group textarea::placeholder, .group input::placeholder{
 
     font-family:Arial, Helvetica, sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
    
+ }
+
+ .group input#rutaImagen{
+    display: none;
  }
 
  .form-container .sendMessage{

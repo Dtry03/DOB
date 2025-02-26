@@ -93,7 +93,7 @@
 
                     while ($row= $stmt->fetch()) {
                         
-                        echo "<tr><td>".$row["ruta_imagen"]."</td><td>".$row["nombre"]."</td><td>".$row["descripcion"]."</td><td><form method='post' action='listarProductos.php' onsubmit='return confirm('¿Estás seguro de que deseas eliminar este producto?');'><input type='hidden' id='id' name='id' value='".$row["id"]."' required><button type='submit' name='delete'><i class='fa fa-xmark'></i></button></form></td><td><a href='nuevoProducto.php'><i class='fa fa-pencil'></i></a></td></tr>";
+                        echo "<tr><td>".$row["ruta_imagen"]."</td><td>".$row["nombre"]."</td><td>".$row["descripcion"]."</td><td><form method='post' action='listarProductos.php' onsubmit='return confirm('¿Estás seguro de que deseas eliminar este producto?');'><input type='hidden' id='id' name='id' value='".$row["id"]."' required><button type='submit' name='delete'><i class='fa fa-xmark'></i></button></form></td><td><a href='nuevoProducto.php?id=".$row["id"]."'><i class='fa fa-pencil'></i></a></td></tr>";
 
                     }
                     

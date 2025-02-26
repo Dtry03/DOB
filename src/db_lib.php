@@ -92,7 +92,7 @@ function executeSelectStmtObj($conn,$sql, $params){
 
 }
 
-function executeSelectStmtCLass($conn,$sql, $params,$class,$args){
+function executeSelectStmtClass($conn,$sql, $params,$class,$args){
 
     try {
         if($conn== null){
@@ -110,7 +110,7 @@ function executeSelectStmtCLass($conn,$sql, $params,$class,$args){
 
         $stmt->execute();
 
-        return $stmt->fetchAll(\PDO::FETCH_CLASS,\PDO::FETCH_PROPS_LATE,$class,$args);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE,$class,$args);
     
     } catch (\PDOException $e) {
 

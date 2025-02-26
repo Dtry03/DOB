@@ -7,13 +7,16 @@ class Producto{
     private $id;
     private $nombre;
     private $descripcion;
-    private $rutaImagen;
+    private $ruta_imagen;
+    private $id_categoria;
 
-    public function __construct($id,$rutaImagen,$nombre,$descripcion){
+    public function __construct($id,$ruta_imagen,$nombre,$descripcion,$id_categoria){
         $this->id=$id;
+        $this->ruta_imagen=$ruta_imagen;
         $this->nombre=$nombre;
         $this->descripcion=$descripcion;
-        $this->rutaImagen=$rutaImagen;
+        $this->id_categoria=$id_categoria;
+        
     }
     
     public function getId(){
@@ -40,13 +43,22 @@ class Producto{
         return $this->descripcion=$descripcion;
     }
 
-    public function getRutaImagen(){
-        return $this->rutaImagen;
+    public function getruta_imagen(){
+        return $this->ruta_imagen;
     }
 
-    public function setRutaImagen($rutaImagen){
-        return $this->rutaImagen=$rutaImagen;
+    public function setruta_imagen($ruta_imagen){
+        return $this->ruta_imagen=$ruta_imagen;
     }
+
+    public function getid_categoria(){
+        return $this->id_categoria;
+    }
+
+    public function setid_categoria($id_categoria){
+        return $this->id_categoria=$id_categoria;
+    }
+
 
 
 }
