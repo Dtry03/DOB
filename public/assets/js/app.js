@@ -1,10 +1,19 @@
 //SELECCIONAR TEXTO DE INPUT TYPE FILE 
+<<<<<<< HEAD
 if(document.getElementById("rutaImagen")){
     document.getElementById("rutaImagen").addEventListener("change", function () {
     let fileName = this.files.length > 0 ? this.files[0].name : "Ningún archivo seleccionado";
     document.querySelector(".file-name").textContent = fileName;
    });
 }
+=======
+
+document.getElementById("rutaImagen").addEventListener("change", function () {
+    let fileName = this.files.length > 0 ? this.files[0].name : "Ningún archivo seleccionado";
+    document.querySelector(".file-name").textContent = fileName;
+  });
+
+>>>>>>> fd4c5f47e6ee9878d2773e40bf37e274f46a45cc
 //-----------------------------------------------------------------
 
 // CAMBIAR EL MENU DE COLOR AL DESLIZAR LA PÁGINA HACIA ABAJO
