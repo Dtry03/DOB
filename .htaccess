@@ -1,0 +1,15 @@
+Options -Indexes
+
+ErrorDocument 404 /htdocs/DOB/
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+
+RewriteCond %{REQUEST_FILENAME} -d
+
+RewriteRule ^ - [L]
+
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.php [L]
+
+# RewriteRule . index.php [L]

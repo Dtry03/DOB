@@ -1,0 +1,12 @@
+CREATE DATABASE DOB;
+
+USE DOB;
+
+CREATE TABLE cookies (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	ip VARCHAR(255),
+	statistics BOOLEAN,
+	marketing BOOLEAN
+);
+
+
