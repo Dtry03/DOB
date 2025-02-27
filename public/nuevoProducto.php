@@ -35,27 +35,38 @@
                 if(isset($_POST["nombre"] ) && isset($_POST["descripcion"] )&& isset($_POST["categoria"])){
 
                     
+                       
+                            if(isset($_FILES['rutaImagen']) && $_FILES['rutaImagen']['error'] === UPLOAD_ERR_OK){
 
-                        if(isset($_FILES['rutaImagen']) && $_FILES['rutaImagen']['error'] === UPLOAD_ERR_OK){
+                                $directorio= __DIR__."/assets/images/galleryProducts";
+                                $nombre_archivo = $_FILES['rutaImagen']['name'];
+                                $nombre_temporal = $_FILES['rutaImagen']['tmp_name'];
+                                $extension = strtolower(pathinfo($nombre_archivo, PATHINFO_EXTENSION));
+                                $nombre_unico = uniqid() . '.' . $extension;
+                                $ruta_destino = $directorio."/".$nombre_unico;
 
-                            $directorio= __DIR__."/assets/images/galleryProducts";
-                            $nombre_archivo = $_FILES['rutaImagen']['name'];
-                            $nombre_temporal = $_FILES['rutaImagen']['tmp_name'];
-                            $extension = strtolower(pathinfo($nombre_archivo, PATHINFO_EXTENSION));
-                            $nombre_unico = uniqid() . '.' . $extension;
-                            $ruta_destino = $directorio."/".$nombre_unico;
+                                
 
+                                if (move_uploaded_file($nombre_temporal , $ruta_destino)) {
+
+                                    echo "La imagen se ha subido correctamente. Ruta: ";
+
+                                } else {
                             
+                                    echo "Error: Hubo un problema al subir la imagen.";
 
-                            if (move_uploaded_file($nombre_temporal , $ruta_destino)) {
+                                }
 
-                                echo "La imagen se ha subido correctamente. Ruta: ";
+                                
 
-                            } else {
-                        
-                                echo "Error: Hubo un problema al subir la imagen.";
-
+ 
+            
+                            }else{
+                                $ruta_destino=$_POST["valorImagen"];
                             }
+
+
+                         if(empty($_POST["id"])){
 
                             $params=[$ruta_destino,$_POST["nombre"],$_POST["descripcion"],$_POST["categoria"]];
 
@@ -66,10 +77,10 @@
                             }else {
                                 echo "Error al crear el producto: ";
                             }
-        
-                        }else{
+
+                         }else{
                             
-                            $params=[$_POST["nombre"],$_POST["descripcion"],$_POST["categoria"],$_FILES['rutaImagen'],$_POST["id"]];
+                            $params=[$_POST["nombre"],$_POST["descripcion"],$ruta_destino,$_POST["categoria"],$_POST["id"]];
 
                             if(executeDMLStmt($conn,Constantes::UPDATE_PRODUCTO,$params)){
                                 echo "producto modificado con exito";
@@ -143,6 +154,8 @@
                             </label>
 
                             <span class='form-error-message' id="name-error-rutaImagen"></span>
+
+                            <input type="hidden" name="valorImagen" value="<?php echo $producto->getruta_imagen(); ?>">
 
 
                             <input type="text" id="name" placeholder="nombre" name="nombre" value="<?php echo $producto->getNombre(); ?>">
