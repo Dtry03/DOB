@@ -1,6 +1,17 @@
 <?php 
 
 session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "GET"){
+    if(isset($_GET["borrar"] ) && $_GET["borrar"]){
+
+        session_destroy();
+        header("Location: index.php");
+        exit();
+
+    }
+}
+
 if (!isset($_SESSION["usuario"])) {
     header("Location: index.php");
     exit();
@@ -39,6 +50,12 @@ if (!isset($_SESSION["usuario"])) {
                <li>
                
                    <a href=".#products">Productos</a>
+
+               </li>
+
+               <li>
+
+                    <a href="listarCategorias.php?borrar=true">Cerrar sesión</a>
 
                </li>
 
@@ -112,7 +129,7 @@ if (!isset($_SESSION["usuario"])) {
 
                     <li>
                     
-                        <a href="listarCategorias.php">Nombre usuario</a>
+                        <a href="listarCategorias.php?borrar=true">Cerrar sesión</a>
 
                     </li>
 

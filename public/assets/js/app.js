@@ -1,3 +1,67 @@
+// ANIMACIONES AL PULSAR EN UN BOTÓN DEL MENÚ
+
+$(document).ready(() =>{
+    
+
+    $(".menu-content .links li a").click(function(e) {
+        
+
+        $(".menu-content .links li a").removeClass("active");
+
+        $(".info-cookies").fadeOut(500);
+
+        $(".container section:not(#footer)").fadeIn(500);
+
+      
+
+        var hash= this.hash;
+
+        $("html, body").animate({
+
+            scrollTop: $(hash).offset().top
+
+        });
+
+        window.location.hash = hash;
+        
+        $(this).addClass("active");
+
+
+    });
+});
+
+//-----------------------------------------------------------------
+
+// EFECTO MENU MÓVIL
+
+$(document).ready(() =>{
+
+    $(".button-menu").click(function() {
+        
+        $(".menu-mobile-container").fadeIn(500);
+
+    });
+
+    $(".menu-mobile-close-button").click(function() {
+        
+        $(".menu-mobile-container").fadeOut(500);
+
+    });
+
+    $(".menu-mobile-links li").click(function() {
+        
+        $(".info-cookies").fadeOut(500);
+
+        $(".container section:not(#footer)").fadeIn(500);
+        
+        $(".menu-mobile-container").fadeOut(500);
+
+    });
+
+});
+
+//-----------------------------------------------------------------
+
 //SELECCIONAR TEXTO DE INPUT TYPE FILE 
 if(document.getElementById("rutaImagen")){
     document.getElementById("rutaImagen").addEventListener("change", function () {
@@ -670,41 +734,6 @@ $(document).ready(() =>{
 
 //-----------------------------------------------------------------
 
-// ANIMACIONES AL PULSAR EN UN BOTÓN DEL MENÚ
-
-
-$(document).ready(() =>{
-    
-
-    $(".menu-content .links li a").click(function(e) {
-        
-
-        $(".menu-content .links li a").removeClass("active");
-
-        $(".info-cookies").fadeOut(500);
-
-        $(".container section:not(#footer)").fadeIn(500);
-
-      
-
-        var hash= this.hash;
-
-        $("html, body").animate({
-
-            scrollTop: $(hash).offset().top
-
-        });
-
-        window.location.hash = hash;
-        
-        $(this).addClass("active");
-
-
-    });
-});
-
-
-//-----------------------------------------------------------------
 
 // ANIMACIÓN PÁGINAS COOKIES
 
@@ -845,36 +874,6 @@ $(document).ready(() =>{
         
     });
 
-
-});
-
-//-----------------------------------------------------------------
-
-// EFECTO MENU MÓVIL
-
-$(document).ready(() =>{
-
-    $(".button-menu").click(function() {
-        
-        $(".menu-mobile-container").fadeIn(500);
-
-    });
-
-    $(".menu-mobile-close-button").click(function() {
-        
-        $(".menu-mobile-container").fadeOut(500);
-
-    });
-
-    $(".menu-mobile-links li").click(function() {
-        
-        $(".info-cookies").fadeOut(500);
-
-        $(".container section:not(#footer)").fadeIn(500);
-        
-        $(".menu-mobile-container").fadeOut(500);
-
-    });
 
 });
 

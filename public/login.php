@@ -20,10 +20,51 @@
 
     <div class="container">
 
-        <?php 
-  
-        ?>
+    <?php
+        session_start();
 
+        
+        if (isset($_SESSION["usuario"])) {
+            header("Location: listarProductos.php");
+            exit();
+        }
+
+        require_once(__DIR__."/../src/Producto.php");
+        require_once(__DIR__."/../src/Constantes.php");
+        require_once(__DIR__."/include/conexion.php");
+
+        use function APP\inventario\closeCon;
+        use function APP\inventario\executeDMLStmt;
+        use function APP\inventario\executeSelectStmtAssoc;
+
+        use  APP\inventario\Constantes;
+
+        try {
+
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $usuario =  $_POST["usuario"];
+                $password = $_POST["pass"];
+
+                $stmt = executeSelectStmtAssoc($conn,Constantes::GET_USUARIO_BY_ID,[$usuario]);
+
+                foreach ($stmt as $row) {
+                    $pass= $row["pass"];
+                }
+                
+                if (password_verify($password, $pass)) {
+                    $_SESSION["usuario"] = $usuario;
+                    header("Location: listarProductos.php"); 
+                    exit();
+                } else {
+                    echo "Usuario o contraseña incorrectos.";
+                }
+            }
+        }catch (\PDOException $e) {
+                    
+            echo "error al obtener los datos";
+        }
+        
+    ?>
 
         <div class="form-container login">
 
@@ -45,11 +86,11 @@
         </div>
 
 
-                    <form action="nuevaCategoria.php" id="contact-form" method="post">
+                    <form action="login.php" id="contact-form" method="post">
 
                         <div class="group mobile">
 
-                            <input type="text" id="name" placeholder="nombre" name="nombre">
+                            <input type="text" id="usuario" placeholder="usuario" name="usuario">
 
                             <span class='form-error-message' id="name-error-mobile"></span>
 

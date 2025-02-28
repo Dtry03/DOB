@@ -63,5 +63,10 @@
   <span class="onoff-slider"></span>
 </label>
 
+<?php 
+   $hash = password_hash('$VQcYPvpLkt3guo4m!Js4z', PASSWORD_BCRYPT);
+   echo $hash;
+?>
+
 </body>
 </html>

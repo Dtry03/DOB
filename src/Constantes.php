@@ -13,6 +13,7 @@ class Constantes{
     const GET_CATEGORIA_BY_ID="SELECT * from categoria where id = ? ";
     const DELETE_CATEGORIA="DELETE FROM categoria WHERE id = ?";
     const UPDATE_CATEGORIA="UPDATE categoria SET nombre = ? WHERE id = ?";
+    const GET_USUARIO_BY_ID="SELECT * FROM usuarios WHERE usuario = ?";
 }
 
 

@@ -305,22 +305,6 @@ body{
     font-size: 1.5rem;
 }
 
-
-@media screen and (max-width: 1000px)  {
-
-    .menu-pc{
-
-        display: none;
-    }
-
-    .menu-mobile{
-
-        display: block;
-        background-color: #fff;
-    }
-   
-}
-
 .info-container{
     display:flex ;
     width: 100%;
@@ -470,3 +454,27 @@ body{
     background-color: rgb(70, 69, 69);
     transition-duration: 0.5s;
 }
+
+
+
+@media screen and (max-width: 1000px)  {
+
+    .menu-pc{
+
+        display: none;
+    }
+
+    .menu-mobile{
+
+        display: block;
+        background-color: #fff;
+    }
+
+    .form-container.login{
+        width: 90%;
+ 
+    }
+    
+   
+}
+
