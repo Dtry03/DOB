@@ -379,6 +379,15 @@ body{
 
 }
 
+.form-container.login{
+    width: 30%;
+    border: 1px solid gray;
+    padding: 60px 10px;
+    display:flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
 .form-container form{
 
     display: flex;
@@ -387,6 +396,10 @@ body{
 
 }
 
+
+.login .group{
+  
+}
 
 .group{
     display: flex;
@@ -406,6 +419,7 @@ body{
    box-sizing: content-box;
    
 }
+
 
  .group label .sendMessage{
     padding: 10px 10px;
@@ -443,6 +457,12 @@ body{
     letter-spacing: 1.5px;
     color: white;
     cursor: pointer;
+}
+
+
+.form-container.login .sendMessage{
+
+    width: inherit;
 }
 
 .form-container .sendMessage:hover{

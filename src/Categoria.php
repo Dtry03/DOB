@@ -2,7 +2,7 @@
 
 namespace APP\inventario;
 
-class Producto{
+class Categoria{
     
     private $id;
     private $nombre;

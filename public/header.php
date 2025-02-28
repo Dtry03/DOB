@@ -1,3 +1,13 @@
+<?php 
+
+session_start();
+if (!isset($_SESSION["usuario"])) {
+    header("Location: index.php");
+    exit();
+}
+
+?>
+
 <div class="menu-mobile-container" id="menu-mobile-container">
        
        <div class="menu-mobile-content">
@@ -97,6 +107,12 @@
                     <li>
                     
                         <a href="listarCategorias.php">Categorías</a>
+
+                    </li>
+
+                    <li>
+                    
+                        <a href="listarCategorias.php">Nombre usuario</a>
 
                     </li>
 

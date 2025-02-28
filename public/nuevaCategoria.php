@@ -22,29 +22,77 @@
 
         <?php 
             include __DIR__."/header.php";
-            require_once(__DIR__."/../src/Producto.php");
+            require_once(__DIR__."/../src/Categoria.php");
             require_once(__DIR__."/../src/Constantes.php");
             require_once(__DIR__."/include/conexion.php");
     
             use function APP\inventario\closeCon;
             use function APP\inventario\executeDMLStmt;
+            use function APP\inventario\executeSelectStmtClass;
             use  APP\inventario\Constantes;
+            use APP\inventario\Categoria;
     
                 
+
+            $categoria= new Categoria("","");
+
             if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
                 if(isset($_POST["nombre"])){
+
+                    if(empty($_POST["id"])){
     
-                    $params=[$_POST["nombre"]];
-    
-                    if(executeDMLStmt($conn,Constantes::CREATE_CATEGORIA,$params)){
-                        echo "producto insertado con exito";
-                        header("Location: listarCategorias.php");
-                        exit();
-                    }else {
-                        echo "Error al crear la categoría: ";
+                        $params=[$_POST["nombre"]];
+        
+                        if(executeDMLStmt($conn,Constantes::CREATE_CATEGORIA,$params)){
+                            echo "producto insertado con exito";
+                            header("Location: listarCategorias.php");
+                            exit();
+                        }else {
+                            echo "Error al crear la categoría: ";
+                        }
+
+                    }else{
+
+
+                        $params=[$_POST["nombre"],$_POST["id"]];
+
+                        if(executeDMLStmt($conn,Constantes::UPDATE_CATEGORIA,$params)){
+                            echo "categoría modificada con exito";
+                            header("Location: listarCategorias.php");
+                            exit();
+                        }else {
+                            echo "Error al crear la categoría: ";
+                        }
+
                     }
     
     
+                }
+
+            }
+
+                            
+            if ($_SERVER["REQUEST_METHOD"] == "GET"){
+                if(isset($_GET["id"] )){
+
+                  
+                    $params=[$_GET["id"]];
+
+                    $stmt=executeSelectStmtClass($conn,Constantes::GET_CATEGORIA_BY_ID,$params,APP\inventario\Categoria::class,['id','nombre']);
+
+                    
+                    foreach ($stmt as $categorias) {
+                        $categoria= $categorias;
+                        
+                    }
+
+                    
+
+
+                    
+
+
                 }
             }
         
@@ -73,9 +121,12 @@
 
                         <div class="group mobile">
 
-                            <input type="text" id="name" placeholder="nombre" name="nombre">
+                            <input type="text" id="name" placeholder="nombre" name="nombre" value="<?php echo $categoria->getNombre(); ?>">
 
                             <span class='form-error-message' id="name-error-mobile"></span>
+
+                            <input type="hidden" id="id"  name="id" value="<?php echo $categoria->getId(); ?>">
+
 
                         </div>
 

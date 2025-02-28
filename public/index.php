@@ -409,6 +409,12 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['coments']))
 
                 </li>
 
+                <li>
+                
+                    <a href="login.php">Área usuario</a>
+
+                </li>
+
             </ul>
 
             <div class="menu-social-links">
@@ -504,6 +510,12 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['coments']))
                                 <li>
                                 
                                     <a href=".#contact">Contacto</a>
+
+                                </li>
+
+                                <li>
+                                    
+                                    <a href="login.php">Área usuario</a>
 
                                 </li>
 
