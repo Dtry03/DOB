@@ -24,3 +24,5 @@ CREATE TABLE usuarios (
     pass VARCHAR(255) NOT NULL
 );
 
+INSERT INTO usuarios(usuario,pass) values("adminDOB","$2y$10$XXMTc24FJS97NYpGibKTa.YtvFTLvMs7kz5vatVXYM3xuO6SvFeDK");
+

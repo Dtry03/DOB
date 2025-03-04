@@ -6,14 +6,14 @@
   <title>Botón On/Off</title>
   <style>
     /* Estilos para personalizar el aspecto del botón */
-    .onoff-switch {
+    .onoff-switch-stock {
       position: relative;
       display: inline-block;
       width: 60px;
       height: 34px;
     }
 
-    .onoff-switch input {
+    .onoff-switch-stock input {
       opacity: 0;
       width: 0;
       height: 0;
@@ -58,7 +58,7 @@
 </head>
 <body>
 
-<label class="onoff-switch">
+<label class="onoff-switch-stock">
   <input type="checkbox" id="onoff">
   <span class="onoff-slider"></span>
 </label>
