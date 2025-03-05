@@ -54,6 +54,14 @@
 
                 use  APP\inventario\Constantes;
 
+
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['onoff'])) {
+                    $onoff = $_POST['onoff'];  
+                    echo "Valor recibido: " . htmlspecialchars($onoff);
+                } else {
+                    echo "Error en la solicitud.";
+                }
+
                 try {
 
 
@@ -99,7 +107,7 @@
                             $stock="";
                         }
                         
-                        echo "<tr><td>".$row["ruta_imagen"]."</td><td>".$row["nombre"]."</td><td>".$row["descripcion"]."</td><td><form method='post' action='listarProductos.php' onsubmit='return confirm('¿Estás seguro de que deseas eliminar este producto?');'><input type='hidden' id='id' name='id' value='".$row["id"]."' required><button type='submit' name='delete'><i class='fa fa-xmark'></i></button></form></td><td><a href='nuevoProducto.php?id=".$row["id"]."'><i class='fa fa-pencil'></i></a></td><td><label class='onoff-switch-stock'> <input type='checkbox' id='onoff' ".$stock."> <span class='onoff-slider'></span> </label></td></tr>";
+                        echo "<tr><td>".$row["ruta_imagen"]."</td><td>".$row["nombre"]."</td><td>".$row["descripcion"]."</td><td><form method='post' action='listarProductos.php' onsubmit='return confirm('¿Estás seguro de que deseas eliminar este producto?');'><input type='hidden' id='id' name='id' value='".$row["id"]."' required><button type='submit' name='delete'><i class='fa fa-xmark'></i></button></form></td><td><a href='nuevoProducto.php?id=".$row["id"]."'><i class='fa fa-pencil'></i></a></td><td><label class='onoff-switch-stock'> <input type='checkbox' class='onoff' name='onoff' ".$stock."> <span class='onoff-slider'></span> </label></td></tr>";
 
                     }
                     
