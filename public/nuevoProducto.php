@@ -7,6 +7,13 @@
 
     <link rel="stylesheet" href="assets/css/userArea.css">
 
+    
+    <!-- IMPORTAR FUNCIONES JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- IMPORTAR FUNCIONES JS -->
+    <script src="assets/js/app.js"></script>
+
     <!-- IMPORTAR GOOGLE FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i%7cWork+Sans:400,500,700" rel="stylesheet" type="text/css">
 
@@ -125,26 +132,28 @@
 
     ?>
 
-        <div class="info-container">
 
-            <div class="info-text">
-
-                <h3 class="title-info">
-
-                    <span>
-
-                        Insertar producto
-
-                    </span>
-
-                </h3>
-
-            </div>
-        </div>
 
         <div class="form-container">
 
-                    <form action="nuevoProducto.php" id="contact-form" method="post" enctype="multipart/form-data">
+        <div class="info-container">
+
+                    <div class="info-text">
+
+                        <h3 class="title-info">
+
+                            <span>
+
+                                Insertar producto
+
+                            </span>
+
+                        </h3>
+
+                    </div>
+                    </div>
+
+                    <form action="nuevoProducto.php"  method="post" enctype="multipart/form-data">
 
                         <div class="group mobile">
                             <label>
@@ -165,10 +174,8 @@
 
                             <input type="text" id="descripcion" placeholder="descripción" name="descripcion" value="<?php echo $producto->getDescripcion(); ?>">
 
-                            <span class='form-error-message' id="mail-error-mobile"></span>
+                            <span class='form-error-message' id="name-error-mobile"></span>
 
-
-                            <span class='form-error-message' id="mail-error-mobile"></span>
 
                             <select name="categoria" id="categoria">
 
@@ -204,8 +211,6 @@
                                 ?>
                             </select>
 
-                            <span class='form-error-message' id="mail-error-mobile"></span>
-
                             <input type="hidden" id="id"  name="id" value="<?php echo $producto->getId(); ?>">
 
 
@@ -214,8 +219,6 @@
                         <div class="group error">
 
                             <span class='form-error-message' id="name-error"></span>
-
-                            <span class='form-error-message' id="mail-error"></span>
 
                         </div>
 

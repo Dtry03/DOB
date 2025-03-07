@@ -6,6 +6,9 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="assets/css/userArea.css">
+    
+    <!-- IMPORTAR FUNCIONES JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- IMPORTAR FUNCIONES JS -->
     <script src="assets/js/app.js"></script>
@@ -92,26 +95,28 @@
         
         ?>
 
-        <div class="info-container">
 
-            <div class="info-text">
-
-                <h3 class="title-info">
-
-                    <span>
-
-                        Insertar categoría
-
-                    </span>
-
-                </h3>
-
-            </div>
-        </div>
 
         <div class="form-container">
 
-                    <form action="nuevaCategoria.php" id="contact-form" method="post">
+        <div class="info-container">
+
+                    <div class="info-text">
+
+                        <h3 class="title-info">
+
+                            <span>
+
+                                Insertar categoría
+
+                            </span>
+
+                        </h3>
+
+                    </div>
+                    </div>
+
+                    <form action="nuevaCategoria.php"  method="post">
 
                         <div class="group mobile">
 

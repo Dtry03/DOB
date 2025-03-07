@@ -37,19 +37,19 @@ if (!isset($_SESSION["usuario"])) {
 
                <li>
                
-                   <a href="/">WEB</a>
+                   <a href="index.php">WEB</a>
 
                </li>
 
                <li>
                
-                   <a href=".#info">Categorías</a>
+                    <a href="listarProductos.php">Productos</a>
 
-               </li>
+                </li>
 
                <li>
                
-                   <a href=".#products">Productos</a>
+                   <a href="listarCategorias.php">Categorías</a>
 
                </li>
 
@@ -60,32 +60,6 @@ if (!isset($_SESSION["usuario"])) {
                </li>
 
            </ul>
-
-           <div class="menu-social-links">
-
-                   <ul>
-                        <li>
-
-                           <i class="fa-brands fa-twitter"></i>
-
-                       </li>
-
-                       <li>
-
-                           <i class="fa-brands fa-instagram"></i>
-
-                       </li>
-
-                       <li>
-
-                           <i class="fa-brands fa-facebook"></i>
-
-                       </li>
-
-                   </ul>
-
-            </div>
-
            
 
        </div>

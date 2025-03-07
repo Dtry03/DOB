@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="assets/css/userArea.css">
 
+    <!-- IMPORTAR FUNCIONES JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <!-- IMPORTAR FUNCIONES JS -->
     <script src="assets/js/app.js"></script>
 

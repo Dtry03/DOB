@@ -1,4 +1,11 @@
-
+//SELECCIONAR TEXTO DE INPUT TYPE FILE 
+if(document.getElementById("rutaImagen")){
+    document.getElementById("rutaImagen").addEventListener("change", function () {
+    let fileName = this.files.length > 0 ? this.files[0].name : "Ningún archivo seleccionado";
+    document.querySelector(".file-name").textContent = fileName;
+   });
+}
+//-----------------------------------------------------------------
 // ACTUALIZAR STOCK
 document.querySelectorAll(".onoff").forEach(element => {
     element.addEventListener("change", function(event) {
@@ -86,15 +93,6 @@ $(document).ready(() =>{
 
 });
 
-//-----------------------------------------------------------------
-
-//SELECCIONAR TEXTO DE INPUT TYPE FILE 
-if(document.getElementById("rutaImagen")){
-    document.getElementById("rutaImagen").addEventListener("change", function () {
-    let fileName = this.files.length > 0 ? this.files[0].name : "Ningún archivo seleccionado";
-    document.querySelector(".file-name").textContent = fileName;
-   });
-}
 //-----------------------------------------------------------------
 
 // CAMBIAR EL MENU DE COLOR AL DESLIZAR LA PÁGINA HACIA ABAJO

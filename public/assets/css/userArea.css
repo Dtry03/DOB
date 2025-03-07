@@ -5,6 +5,7 @@
 
 body{
     font-family: Work Sans;
+    position: relative;
 }
 
 .container{
@@ -14,7 +15,7 @@ body{
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    margin-top: 20vh;
+    
 }
 
 .container .products-container{
@@ -23,6 +24,7 @@ body{
     align-items: center;
     width: inherit;
     gap: 20px;
+    margin-top: 20vh;
 }
 
 .container .products-container .table-container{
@@ -99,6 +101,7 @@ body{
     z-index: 99;
     background-color: black;
     width: 100%;
+    top: 0;
 }
 
 .menu-mobile-content{
@@ -134,7 +137,7 @@ body{
 .menu-close-button-container .menu-mobile-close-button i{
 
     font-size: 1.5rem;
-    color: #fff!important;
+    color: #b8b8b8!important;
     transition-duration: .5s ;
 }
 
@@ -161,7 +164,7 @@ body{
 
     font-family: 'Times New Roman', Times, serif;
     text-decoration: none;
-    color: #fff;
+    color: #b8b8b8;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 1.3rem;
@@ -176,6 +179,22 @@ body{
     color: #fff;
 }
 
+.menu-mobile-links.scroll li a{
+
+    color: #929090;
+    transition-duration: .5s ;
+}
+
+.menu-mobile-links.scroll li a.active{
+
+    color: #636363;
+}
+
+.menu-mobile-links.scroll li a:hover{
+
+    color: #636363;
+   
+}
 
 .menu-social-links{
     width: 100%;
@@ -203,7 +222,7 @@ body{
 .menu-social-links li i{
 
     font-size: 1rem;
-    color: #fff!important;
+    color: #b8b8b8!important;
     transition-duration: 0.7s;
 
 }
@@ -213,6 +232,7 @@ body{
     color: #fff!important;
     
 }
+
 
 
 .container-menu{
@@ -356,11 +376,13 @@ body{
 }
 
 .form-container{
-
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
     padding-top: 4vh;
     position: relative;
     width: 100%;
-
+    margin-top: 20vh;
 }
 
 .form-container.login{
@@ -457,6 +479,16 @@ body{
 
 
 
+@media screen and (max-width: 1200px)  {
+
+
+    .container .products-container .table-container .productos tr td:nth-child(1),.container .products-container .table-container .productos tr td:nth-child(3),.container .products-container .table-container .productos tr th:nth-child(1),.container .products-container .table-container .productos tr th:nth-child(3){
+        display: none;
+    }
+    
+   
+}
+
 @media screen and (max-width: 1000px)  {
 
     .menu-pc{
@@ -474,9 +506,23 @@ body{
         width: 90%;
  
     }
-    
    
 }
+
+@media screen and (max-width: 800px)  {
+
+    .info-container .info-text {
+        flex-direction: column;
+    }
+    
+
+    .form-container .sendMessage{
+        width: 80%;
+    }
+    
+}
+
+
 
 .onoff-switch-stock {
     position: relative;
