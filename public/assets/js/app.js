@@ -11,24 +11,21 @@ document.querySelectorAll(".onoff").forEach(element => {
     element.addEventListener("change", function(event) {
         event.preventDefault();
 
-        let formData = new FormData();
-        formData.append("onoff", this.checked ? "1" : "0"); // Si es checkbox, enviar 1 o 0
+        let form = this.closest("form");
+        let formData = new FormData(form);
+        formData.set("onoff", this.checked ? "1" : "0"); // Asegurar que el valor sea "1" o "0"
 
-        console.log("Enviando:", this.checked ? "1" : "0"); // DEBUG en consola
-
-        fetch("http://localhost/Desarrollo_DOB/public/listarProductos.php", { 
+        fetch("actualizarStock.php", { 
             method: "POST",
             body: formData
         })
-        .then(response => response.text()) 
+        .then(response => response.json()) // Convertir la respuesta a JSON
         .then(data => {
-            console.log("Respuesta del servidor:", data); // DEBUG en consola
-            document.getElementById("respuesta").innerHTML = data;
+            console.log("Respuesta del servidor:", data); // Mostrar JSON en consola
         })
         .catch(error => console.error("Error en fetch:", error));
     });
 });
-
 
 
 // ANIMACIONES AL PULSAR EN UN BOTÓN DEL MENÚ

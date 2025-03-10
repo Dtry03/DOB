@@ -9,6 +9,7 @@ class Constantes{
     const DELETE_PRODUCTO="DELETE FROM producto WHERE id = ?";
     const LIST_CATEGORIAS="SELECT * FROM categoria";
     const UPDATE_PRODUCTO="UPDATE producto SET nombre = ?, descripcion = ?, ruta_imagen = ?, id_categoria=? WHERE id = ?";
+    const UPDATE_PRODUCTO_STOCK="UPDATE producto SET stock = ? WHERE id = ?";
     const CREATE_CATEGORIA="INSERT INTO categoria (nombre) VALUES (?)";
     const GET_CATEGORIA_BY_ID="SELECT * from categoria where id = ? ";
     const DELETE_CATEGORIA="DELETE FROM categoria WHERE id = ?";
