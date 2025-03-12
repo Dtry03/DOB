@@ -2,6 +2,14 @@
 
 // MANEJAR ERROR 404
 
+require_once(__DIR__."/../src/Producto.php");
+require_once(__DIR__."/../src/Constantes.php");
+require_once(__DIR__."/include/conexion.php");
+
+use function APP\inventario\closeCon;
+use function APP\inventario\executeDMLStmt;
+
+use  APP\inventario\Constantes;
 
 function error404(){
 
@@ -681,11 +689,35 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['coments']))
 
                     <div class="products-gallery-buttons">
 
-                     <button class="gallery-button">Legumbres</button>
+                    <select name="categoria" id="categoria">
 
-                     <button class="gallery-button">Cebollas</button>
+                            
+                            <?php 
 
-                     <button class="gallery-button">Ajos</button>
+                                    try {
+
+                                        $stmt=$conn->prepare(Constantes::LIST_CATEGORIAS);
+
+                                        $stmt->execute();
+
+                                        while ($row= $stmt->fetch()) {
+                                            
+                     
+                                                echo "<option value='".$row["id"]."'>".$row["nombre"]."</option>";
+                                            
+
+                                        }
+                            
+                                        closeCon($conn);
+
+                                    } catch (\PDOException $e) {
+                                        
+                                        echo "error al obtener los datos";
+                                    }
+
+
+                            ?>
+                            </select>
 
                     </div>
 
@@ -932,97 +964,9 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['coments']))
 
                         </div>
                         
-                    </div>
+                    </div> 
 
-                    <div class="container-gallery onion">
-
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Cebolla de cocina
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Cebolla utilizada principalmente para cocinar.</p>
-
-                            </div>    
-
-                        </div>
-
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Cebolla dulce
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Variedad de cebolla de sabor suave.</p>
-
-                            </div>    
-
-                        </div>
-
-                    </div>
-
-                    <div class="container-gallery garlic">
-
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Ajo rojo
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products"> Variedad de ajo de sabor más intenso.</p>
-
-                            </div>    
-
-                        </div>
-
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Ajo blanco
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Variedad de ajo de sabor suave.</p>
-
-                            </div>    
-
-                        </div>
-
-
-                    </div>
-
+                
                 </div>
 
             </div>
