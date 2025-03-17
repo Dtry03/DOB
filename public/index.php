@@ -721,248 +721,56 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['coments']))
 
                     </div>
 
-                    <div class="container-gallery legumes">
+                    <div class="container-gallery">
 
+                    <?php 
 
-                        <div class="gallery-photo">
+                        try {
 
-                            <div class="photo-content">
+                            $stmt=$conn->prepare(Constantes::LIST_PRODUCTOS);
 
-                                <h3 class="title-products">
+                            $stmt->execute();
 
-                                    <span>
+                            while ($row= $stmt->fetch()) {
 
-                                        Alubia redondilla
 
-                                    </span>
+                              echo  '<div class="gallery-photo" style="background-img:url('.$row["ruta_imagen"].')">
 
-                                </h3>   
+                                <div class="photo-content">
+    
+                                    <h3 class="title-products">
+    
+                                        <span>
+    
+                                            '.$row["nombre"].'
+    
+                                        </span>
+    
+                                    </h3>   
+    
+                                    <p class="content-products">'.$row["descripcion"].'</p>
+    
+                                </div>    
+    
+                            </div>';
+                                
 
-                                <p class="content-products">Variedad de alubia redonda.</p>
+                         
+                                
 
-                            </div>    
+                            }
 
-                        </div>
-                        
-                        <div class="gallery-photo">
+                            closeCon($conn);
 
-                            <div class="photo-content">
+                        } catch (\PDOException $e) {
+                            
+                            echo "error al obtener los datos";
+                        }
 
-                                <h3 class="title-products">
 
-                                    <span>
+                    ?>
 
-                                        Garbanzo grande
 
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Garbanzo de tamaño grande utilizado en diversos platos.</p>
-
-                            </div>    
-
-                        </div>
-                        
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Garbanzo pedro sillano
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Garbanzo de pequeño tamaño, de color marrón claro anaranjado.</p>
-
-                            </div>    
-
-                        </div>
-                        
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Alubia canela
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Variedad de alubia pequeña y ovalada.</p>
-
-                            </div>    
-
-                        </div>
-                        
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Alubia pinta
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products"> Alubia de color pinto, común en guisos.</p>
-
-                            </div>    
-
-                        </div>
-                        
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        alubia canellini de riñon
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products"> Alubia alargada con forma de riñón.</p>
-
-                            </div>    
-
-                        </div>
-                        
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Alubia mandilín
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Alubia de color morado y blanco repartido por el grano a partes iguales.</p>
-
-                            </div>    
-
-                        </div>
-                        
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Fabote
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Variedad de alubia grande y carnosa utilizada en guisos.</p>
-
-                            </div>    
-
-                        </div>
-                        
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Lenteja pardina
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Pequeña lenteja de color pardo.</p>
-
-                            </div>    
-
-                        </div>
-                        
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Alubia verdina
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products"> Pequeña alubia verde utilizada en guisos y ensaladas.</p>
-
-                            </div>    
-
-                        </div>
-                        
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Fabada asturiana
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Variedad regional cultivada en Asturias.</p>
-
-                            </div>    
-
-                        </div>
-                        
-                        <div class="gallery-photo">
-
-                            <div class="photo-content">
-
-                                <h3 class="title-products">
-
-                                    <span>
-
-                                        Alubia roja
-
-                                    </span>
-
-                                </h3>   
-
-                                <p class="content-products">Alubia de color rojo en forma de riñón.</p>
-
-                            </div>    
-
-                        </div>
                         
                     </div> 
 

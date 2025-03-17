@@ -878,25 +878,25 @@ $(document).ready(() =>{
 // FUNCIÓN PARA CARGAR LAS IMAGENES DE LA GALERÍA
 
 
-$(document).ready(() =>{
+// $(document).ready(() =>{
 
-    let galleryImages= [];
+//     let galleryImages= [];
 
-    for(var i=1; i <=16; i++ ){
+//     for(var i=1; i <=16; i++ ){
 
-        galleryImages[i-1]= "assets/images/galleryProducts/"+i+".jpg";
+//         galleryImages[i-1]= "assets/images/galleryProducts/"+i+".jpg";
 
-    }
+//     }
 
 
-    $(".container-gallery .gallery-photo").each(function(index) {
+//     $(".container-gallery .gallery-photo").each(function(index) {
 
-        $(this).css("background-image", "url("+galleryImages[index]+")");
+//         $(this).css("background-image", "url("+galleryImages[index]+")");
         
-    });
+//     });
 
 
-});
+// });
 
 //-----------------------------------------------------------------
 

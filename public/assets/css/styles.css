@@ -821,20 +821,12 @@ select option{
     height: inherit;
 }
 
-.container-gallery.legumes{
+.container-gallery{
 
     display: grid;
     grid-template-columns: repeat(3,1fr) ;
 
 }
-
-.container-gallery.onion, .container-gallery.garlic{
-
-    display: none;
-    grid-template-rows: repeat(2,1fr) ;
-  
-}
-
 
 
 .container-gallery .gallery-photo{
