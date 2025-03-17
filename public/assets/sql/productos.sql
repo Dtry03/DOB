@@ -32,7 +32,9 @@ INSERT INTO categoria (nombre) VALUES
 ('Legumbres'), 
 ('Fruta'), 
 ('Plantas'), 
-('Pimientos');
+('Pimientos'),
+('Cebolla'), 
+('Ajos');
 
 -- Miel
 INSERT INTO producto (nombre, descripcion, ruta_imagen, stock, id_categoria) 
@@ -58,6 +60,43 @@ INSERT INTO producto (nombre, descripcion, ruta_imagen, stock, id_categoria) VAL
 INSERT INTO producto (nombre, descripcion, ruta_imagen, stock, id_categoria) VALUES 
 ('Judión del Barco de Ávila', 'Alubia grande, cremosa y de piel fina, perfecta para guisos y potajes. Destaca por su suavidad y gran sabor.', '/imagenes/judion.jpg', TRUE, 
     (SELECT id FROM categoria WHERE nombre = 'Legumbres'));
+INSERT INTO producto (nombre, descripcion, ruta_imagen, stock, id_categoria) VALUES 
+('Alubia redondilla', 'Variedad de alubia de forma redonda, ideal para guisos y potajes.', '/imagenes/alubia_redondilla.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Garbanzo grande', 'Garbanzo de tamaño grande, muy apreciado por su textura y sabor en platos tradicionales.', '/imagenes/garbanzo_grande.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Garbanzo Pedro Sillano', 'Garbanzo de pequeño tamaño, de color marrón claro anaranjado, con un sabor intenso.', '/imagenes/garbanzo_pedro_sillano.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Alubia canela', 'Variedad de alubia pequeña y ovalada, con un sabor suave y excelente para estofados.', '/imagenes/alubia_canela.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Alubia pinta', 'Alubia de color pinto, utilizada en guisos tradicionales por su textura cremosa.', '/imagenes/alubia_pinta.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Alubia canellini de riñón', 'Alubia blanca, alargada y con forma de riñón, perfecta para ensaladas y guisos suaves.', '/imagenes/alubia_canellini.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Alubia mandilín', 'Alubia con un patrón de color morado y blanco repartido en partes iguales en el grano.', '/imagenes/alubia_mandilin.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Fabote', 'Variedad de alubia grande y carnosa, ideal para platos de cuchara contundentes.', '/imagenes/fabote.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Lenteja pardina', 'Pequeña lenteja de color pardo, muy utilizada en guisos y sopas.', '/imagenes/lenteja_pardina.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Alubia verdina', 'Pequeña alubia de color verde, perfecta para combinar con mariscos y carnes suaves.', '/imagenes/alubia_verdina.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Fabada asturiana', 'Variedad de alubia cultivada en Asturias, ideal para preparar el tradicional plato de fabada asturiana.', '/imagenes/fabada_asturiana.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres')),
+
+('Alubia roja', 'Alubia de color rojo con forma de riñón, muy utilizada en la cocina internacional.', '/imagenes/alubia_roja.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Legumbres'));
+
 
 -- Fruta
 INSERT INTO producto (nombre, descripcion, ruta_imagen, stock, id_categoria) VALUES 
@@ -109,3 +148,16 @@ INSERT INTO producto (nombre, descripcion, ruta_imagen, stock, id_categoria) VAL
     (SELECT id FROM categoria WHERE nombre = 'Pimientos')),
 ('Pimiento picante de Ponferrada', 'Variedad de pimiento pequeño pero intenso en picor, ideal para darle un toque especial a los platos.', '/imagenes/pimiento_picante.jpg', TRUE, 
     (SELECT id FROM categoria WHERE nombre = 'Pimientos'));
+
+INSERT INTO producto (nombre, descripcion, ruta_imagen, stock, id_categoria) VALUES 
+('Cebolla de cocina', 'Cebolla versátil, utilizada principalmente para cocinar por su sabor intenso y su capacidad de realzar los platos.', '/imagenes/cebolla_cocina.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Cebolla')),
+('Cebolla dulce', 'Variedad de cebolla con un sabor más suave y menos picante, ideal para consumir en crudo en ensaladas y salsas.', '/imagenes/cebolla_dulce.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Cebolla'));
+
+-- Ajos
+INSERT INTO producto (nombre, descripcion, ruta_imagen, stock, id_categoria) VALUES 
+('Ajo rojo', 'Variedad de ajo con un sabor más intenso y picante, ideal para potenciar el sabor de los guisos y salsas.', '/imagenes/ajo_rojo.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Ajos')),
+('Ajo blanco', 'Ajo de sabor más suave y equilibrado, perfecto para aderezos y recetas donde se busca un toque aromático sin exceso de picor.', '/imagenes/ajo_blanco.jpg', TRUE, 
+    (SELECT id FROM categoria WHERE nombre = 'Ajos'));
