@@ -46,11 +46,13 @@
                             if(isset($_FILES['rutaImagen']) && $_FILES['rutaImagen']['error'] === UPLOAD_ERR_OK){
 
                                 $directorio= __DIR__."/assets/images/galleryProducts";
+                                $directorio_insertar= "/desarrollo_DOB/public/assets/images/galleryProducts";
                                 $nombre_archivo = $_FILES['rutaImagen']['name'];
                                 $nombre_temporal = $_FILES['rutaImagen']['tmp_name'];
                                 $extension = strtolower(pathinfo($nombre_archivo, PATHINFO_EXTENSION));
                                 $nombre_unico = uniqid() . '.' . $extension;
                                 $ruta_destino = $directorio."/".$nombre_unico;
+                                $ruta_insertar=$directorio_insertar."/".$nombre_unico;
 
                                 
 
@@ -69,13 +71,13 @@
  
             
                             }else{
-                                $ruta_destino=$_POST["valorImagen"];
+                                $ruta_insertar=$_POST["valorImagen"];
                             }
 
 
                          if(empty($_POST["id"])){
 
-                            $params=[$ruta_destino,$_POST["nombre"],$_POST["descripcion"],$_POST["categoria"]];
+                            $params=[$ruta_insertar,$_POST["nombre"],$_POST["descripcion"],$_POST["categoria"]];
 
                             if(executeDMLStmt($conn,Constantes::CREATE_PRODUCTO,$params)){
                                 echo "producto insertado con exito";
@@ -87,7 +89,7 @@
 
                          }else{
                             
-                            $params=[$_POST["nombre"],$_POST["descripcion"],$ruta_destino,$_POST["categoria"],$_POST["id"]];
+                            $params=[$_POST["nombre"],$_POST["descripcion"],$ruta_insertar,$_POST["categoria"],$_POST["id"]];
 
                             if(executeDMLStmt($conn,Constantes::UPDATE_PRODUCTO,$params)){
                                 echo "producto modificado con exito";

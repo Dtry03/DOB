@@ -10,7 +10,7 @@ nombre VARCHAR(50)
 CREATE TABLE producto(
 id INT PRIMARY KEY AUTO_INCREMENT,
 nombre VARCHAR(50),
-descripcion VARCHAR(50),
+descripcion VARCHAR(500),
 ruta_imagen VARCHAR(500),
 stock BOOLEAN DEFAULT TRUE,
 id_categoria INT,

@@ -733,28 +733,29 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['coments']))
 
                             while ($row= $stmt->fetch()) {
 
-
-                              echo  '<div class="gallery-photo" style="background-img:url('.$row["ruta_imagen"].')">
-
-                                <div class="photo-content">
-    
-                                    <h3 class="title-products">
-    
-                                        <span>
-    
-                                            '.$row["nombre"].'
-    
-                                        </span>
-    
-                                    </h3>   
-    
-                                    <p class="content-products">'.$row["descripcion"].'</p>
-    
-                                </div>    
-    
-                            </div>';
+                              if($row["stock"]){
                                 
+                                echo  '<div class="gallery-photo" style="background-image:url(\''.$row["ruta_imagen"].'\')!important;">
 
+                                    <div class="photo-content">
+        
+                                        <h3 class="title-products">
+        
+                                            <span>
+        
+                                                '.$row["nombre"].'
+        
+                                            </span>
+        
+                                        </h3>   
+        
+                                        <p class="content-products">'.$row["descripcion"].'</p>
+        
+                                    </div>    
+        
+                                </div>';
+                                
+                            }
                          
                                 
 

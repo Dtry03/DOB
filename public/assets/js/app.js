@@ -13,6 +13,29 @@ document.querySelectorAll(".onoff").forEach(element => {
 
         let form = this.closest("form");
         let formData = new FormData(form);
+        formData.set("onoff", this.checked ? "1" : "0");
+
+        fetch("actualizarStock.php", { 
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json()) 
+        .then(data => {
+            console.log("Respuesta del servidor:", data); 
+        })
+        .catch(error => console.error("Error en fetch:", error));
+    });
+});
+
+//-----------------------------------------------------------------
+
+// ACTUALIZAR PRODUCTOS VISIBLES
+document.querySelectorAll(".onoff").forEach(element => {
+    element.addEventListener("change", function(event) {
+        event.preventDefault();
+
+        let form = this.closest("form");
+        let formData = new FormData(form);
         formData.set("onoff", this.checked ? "1" : "0"); // Asegurar que el valor sea "1" o "0"
 
         fetch("actualizarStock.php", { 
@@ -27,6 +50,7 @@ document.querySelectorAll(".onoff").forEach(element => {
     });
 });
 
+//-----------------------------------------------------------------
 
 // ANIMACIONES AL PULSAR EN UN BOTÓN DEL MENÚ
 
