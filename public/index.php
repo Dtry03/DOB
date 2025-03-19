@@ -362,9 +362,6 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['coments']))
     <!-- IMPORTAR FUNCIONES JQUERY -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- IMPORTAR FUNCIONES JS -->
-    <script src="assets/js/app.js"></script>
-
     <!-- IMPORTAR GOOGLE FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i%7cWork+Sans:400,500,700" rel="stylesheet" type="text/css">
 
@@ -1488,6 +1485,8 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['coments']))
 
     </div>  
 
+<!-- IMPORTAR FUNCIONES JS -->
+<script src="assets/js/app.js"></script>
 </body>
 
 </html>

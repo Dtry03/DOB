@@ -30,25 +30,50 @@ document.querySelectorAll(".onoff").forEach(element => {
 //-----------------------------------------------------------------
 
 // ACTUALIZAR PRODUCTOS VISIBLES
-document.querySelectorAll(".onoff").forEach(element => {
-    element.addEventListener("change", function(event) {
-        event.preventDefault();
+document.getElementById("categoria").addEventListener("change", function(event) {
 
-        let form = this.closest("form");
-        let formData = new FormData(form);
-        formData.set("onoff", this.checked ? "1" : "0"); // Asegurar que el valor sea "1" o "0"
+        let formData = new FormData();
+        formData.set("categoria", this.value);
 
-        fetch("actualizarStock.php", { 
+        fetch("actualizarProductosMostrados.php", { 
             method: "POST",
             body: formData
         })
-        .then(response => response.json()) // Convertir la respuesta a JSON
         .then(data => {
-            console.log("Respuesta del servidor:", data); // Mostrar JSON en consola
+            console.log("Respuesta del servidor:", data);
+    
+            // Seleccionar el contenedor donde se mostrarán los productos
+            const container = document.querySelector('.container-gallery');
+            
+            // Limpiar la galería antes de agregar los nuevos productos
+            container.innerHTML = '';
+    
+            // Si la respuesta contiene productos, agregarlos al DOM
+            if (data && Array.isArray(data)) {
+                data.forEach(producto => {
+                    if (producto.stock) {
+                        // Crear el HTML para cada producto
+                        const productoHTML = `
+                            <div class="gallery-photo" style="background-image:url('${producto.ruta_imagen}')">
+                                <div class="photo-content">
+                                    <h3 class="title-products">
+                                        <span>${producto.nombre}</span>
+                                    </h3>   
+                                    <p class="content-products">${producto.descripcion}</p>
+                                </div>    
+                            </div>
+                        `;
+    
+                        // Añadir el producto al contenedor
+                        container.innerHTML += productoHTML;
+                    }
+                });
+            } else {
+                container.innerHTML = '<p>No se encontraron productos.</p>';
+            }
         })
         .catch(error => console.error("Error en fetch:", error));
     });
-});
 
 //-----------------------------------------------------------------
 
