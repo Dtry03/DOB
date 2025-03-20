@@ -40,7 +40,7 @@ document.getElementById("categoria").addEventListener("change", function(event) 
             body: formData
         })
         .then(data => {
-            console.log("Respuesta del servidor:", data);
+            console.log("Respuesta del servidor:", data.productos);
     
             // Seleccionar el contenedor donde se mostrarán los productos
             const container = document.querySelector('.container-gallery');
@@ -48,25 +48,22 @@ document.getElementById("categoria").addEventListener("change", function(event) 
             // Limpiar la galería antes de agregar los nuevos productos
             container.innerHTML = '';
     
-            // Si la respuesta contiene productos, agregarlos al DOM
-            if (data && Array.isArray(data)) {
-                data.forEach(producto => {
-                    if (producto.stock) {
-                        // Crear el HTML para cada producto
-                        const productoHTML = `
-                            <div class="gallery-photo" style="background-image:url('${producto.ruta_imagen}')">
-                                <div class="photo-content">
-                                    <h3 class="title-products">
-                                        <span>${producto.nombre}</span>
-                                    </h3>   
-                                    <p class="content-products">${producto.descripcion}</p>
-                                </div>    
-                            </div>
-                        `;
+            if (data.success && data.productos.length > 0) {
+                // Iterar sobre los productos y agregarlos al DOM
+                data.productos.forEach(producto => {
+                    const productoHTML = `
+                        <div class="gallery-photo" style="background-image:url('${producto.ruta_imagen}')">
+                            <div class="photo-content">
+                                <h3 class="title-products">
+                                    <span>${producto.nombre}</span>
+                                </h3>   
+                                <p class="content-products">${producto.descripcion}</p>
+                            </div>    
+                        </div>
+                    `;
     
-                        // Añadir el producto al contenedor
-                        container.innerHTML += productoHTML;
-                    }
+                    // Insertar el producto en el contenedor
+                    container.innerHTML += productoHTML;
                 });
             } else {
                 container.innerHTML = '<p>No se encontraron productos.</p>';
@@ -74,7 +71,6 @@ document.getElementById("categoria").addEventListener("change", function(event) 
         })
         .catch(error => console.error("Error en fetch:", error));
     });
-
 //-----------------------------------------------------------------
 
 // ANIMACIONES AL PULSAR EN UN BOTÓN DEL MENÚ

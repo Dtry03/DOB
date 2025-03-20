@@ -6,6 +6,7 @@ class Constantes{
     const LIST_PRODUCTOS="SELECT * FROM producto";
     const CREATE_PRODUCTO="INSERT INTO producto (ruta_imagen, nombre, descripcion,id_categoria) VALUES (?, ?, ?,?)";
     const GET_PRODUCTO_BY_ID="SELECT * from producto where id = ? ";
+    const GET_PRODUCTO_BY_CATEGORIA="SELECT * from producto where id_categoria = ? ";
     const DELETE_PRODUCTO="DELETE FROM producto WHERE id = ?";
     const LIST_CATEGORIAS="SELECT * FROM categoria";
     const UPDATE_PRODUCTO="UPDATE producto SET nombre = ?, descripcion = ?, ruta_imagen = ?, id_categoria=? WHERE id = ?";
