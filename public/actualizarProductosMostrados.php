@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['categoria'])) {
     // Devolver la respuesta en formato JSON
     echo json_encode([
         "success" => true,
-        "productos" => $_POST['categoria']
+        "productos" => $productos
     ]);
 
 } else {

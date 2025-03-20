@@ -417,7 +417,6 @@ body{
     text-align: center;
     padding: 0 25%;  
     height: inherit;
-    cursor: url('https://i.ibb.co/8b0PjKz/grab.png'), grab; 
     user-select: none;
 }
 
@@ -825,6 +824,7 @@ select option{
 
     display: grid;
     grid-template-columns: repeat(3,1fr) ;
+    
 
 }
 
@@ -839,39 +839,9 @@ select option{
     z-index: 0;
     transition: .5s ease-in-out;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-    opacity: 0;
+    max-height: 20px;
   
 }
-
-.container-gallery.legumes .gallery-photo{
-
-    left: -50%;
-  
-}
-
-
-.container-gallery.onion .gallery-photo:nth-child(1), .container-gallery.garlic .gallery-photo:nth-child(1){
-    
-    left: -50%;
- 
-  
-}
-
-.container-gallery.onion .gallery-photo:nth-child(2), .container-gallery.garlic .gallery-photo:nth-child(2){
-
-    transform: translateX(100%);
-  
-}
-
-
-.container-gallery.onion .gallery-photo, .container-gallery.garlic .gallery-photo{
-
-    background-size:contain;
-    padding-bottom: 0;  
-
-  
-}
-
 
 
 .gallery-photo::before {
@@ -1518,7 +1488,7 @@ select option{
 
 @media screen and (max-width: 1000px)  {
 
-    .container-gallery.legumes{
+    .container-gallery{
 
         display: grid;
         grid-template-columns: repeat(2,1fr) ;
@@ -1615,9 +1585,9 @@ select option{
 @media screen and (max-width: 830px)  {
 
 
-    .container-gallery.onion .gallery-photo .photo-content .content-products, .container-gallery.garlic .gallery-photo .photo-content .content-products{
+    .container-gallery .gallery-photo .photo-content .content-products{
     
-        padding: 0 100px;
+        padding: 0 20px;
       
     
     }
@@ -1674,7 +1644,7 @@ select option{
    
     }
 
-    .container-gallery.legumes{
+    .container-gallery{
 
         display: grid;
         grid-template-columns: repeat(1,1fr) ;
@@ -1714,13 +1684,13 @@ select option{
         line-height: 36px;  
     }
     
-    .container-gallery.onion .gallery-photo, .container-gallery.garlic .gallery-photo{
+    .container-gallery .gallery-photo{
         
         padding-bottom: 100%;  
     
     }
 
-    .container-gallery.onion .gallery-photo .photo-content .content-products, .container-gallery.garlic .gallery-photo .photo-content .content-products{
+    .container-gallery .gallery-photo .photo-content .content-products{
     
         padding: 0 30px;
       

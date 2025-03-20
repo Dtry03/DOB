@@ -27,50 +27,7 @@ document.querySelectorAll(".onoff").forEach(element => {
     });
 });
 
-//-----------------------------------------------------------------
 
-// ACTUALIZAR PRODUCTOS VISIBLES
-document.getElementById("categoria").addEventListener("change", function(event) {
-
-        let formData = new FormData();
-        formData.set("categoria", this.value);
-
-        fetch("actualizarProductosMostrados.php", { 
-            method: "POST",
-            body: formData
-        })
-        .then(data => {
-            console.log("Respuesta del servidor:", data.productos);
-    
-            // Seleccionar el contenedor donde se mostrarán los productos
-            const container = document.querySelector('.container-gallery');
-            
-            // Limpiar la galería antes de agregar los nuevos productos
-            container.innerHTML = '';
-    
-            if (data.success && data.productos.length > 0) {
-                // Iterar sobre los productos y agregarlos al DOM
-                data.productos.forEach(producto => {
-                    const productoHTML = `
-                        <div class="gallery-photo" style="background-image:url('${producto.ruta_imagen}')">
-                            <div class="photo-content">
-                                <h3 class="title-products">
-                                    <span>${producto.nombre}</span>
-                                </h3>   
-                                <p class="content-products">${producto.descripcion}</p>
-                            </div>    
-                        </div>
-                    `;
-    
-                    // Insertar el producto en el contenedor
-                    container.innerHTML += productoHTML;
-                });
-            } else {
-                container.innerHTML = '<p>No se encontraron productos.</p>';
-            }
-        })
-        .catch(error => console.error("Error en fetch:", error));
-    });
 //-----------------------------------------------------------------
 
 // ANIMACIONES AL PULSAR EN UN BOTÓN DEL MENÚ
@@ -249,131 +206,42 @@ $(document).ready(function name() {
 // ANIMACIÓN CAROUSEL
 
 $(document).ready(() => {
-
-    var slideIndex=1;
-
-    var totalSlides= $(".carousel-info").length;
-
-    var slideWidht;
-
-    var isDragging= false;
-
-    var startX, endX, offSetX= 0;
-
+    let slideIndex = 0;
+    const totalSlides = $(".carousel-info").length;
 
     function showSlide(index) {
-
-        var slideWidht= $("body").width();
-
-        leftPosition= -((index-1) * slideWidht + offSetX);
-
-        $(".carousel-info .text").css("transform", "translateX("+ leftPosition+"px)");
+        let slideWidth = $("body").width();
+        let leftPosition = -(index * slideWidth);
+        $(".carousel-info .text").css("transform", `translateX(${leftPosition}px)`);
     }
-
 
     function updateDots(index) {
-
         $(".dot").removeClass("active-dot");
-
-        $(".dot[data-index='"+ index +"']").addClass("active-dot");
-        
+        $(".dot[data-index='" + index + "']").addClass("active-dot");
     }
 
-    for (var i =0; i < totalSlides; i++) {
-
+    // Crear los dots dinámicamente
+    for (let i = 0; i < totalSlides; i++) {
         $("#carousel-dots").append('<div class="dot" data-index="' + i + '"></div>');
-        
     }
-
     $(".dot:first").addClass("active-dot");
 
-    $(".dot").on("click", function(){
-
-        var clickedIndex= $(this).data('index');
-
-        slideIndex= clickedIndex;
-
+    // Evento click en los dots
+    $(".dot").on("click", function () {
+        let clickedIndex = $(this).data("index");
+        slideIndex = clickedIndex;
         showSlide(slideIndex);
-
         updateDots(slideIndex);
-
     });
 
-    $(".carousel-info .list-info").on("mousedown touchstart", function (e) {
-        
-        isDragging=true;
-
-        startX= e.pageX || e.originalEvent.changedTouches[0].pageX;
-
-        $(".carousel-info .list-info").addClass('dragging');
-
-    });
-
-
-    $(".carousel-info .list-info").on("mouseup touchend", function (e) {
-
-        if (isDragging) {
-
-            isDragging=true;
-
-            endX= e.pageX || e.originalEvent.changedTouches[0].pageX;
-
-            deltaX= startX -endX;
-
-            if (Math.abs(deltaX)>10) {
-
-                slideIndex = (deltaX > 0 ? slideIndex + 1 : slideIndex -1 + totalSlides)  % totalSlides;
-                
-            } else {
-                
-                slideIndex = Math.round(slideIndex);
-
-            }
-
-            isDragging= false;
-
-            $(".carousel-info .list-info").removeClass('dragging');
-
-            offSetX=0;
-
-            showSlide(slideIndex);
-
-            updateDots(slideIndex);
-
-        }
-        
-    });
-
-    $(".carousel-info .list-info").on("mousemove touchmove", function (e) {
-
-        if (isDragging) {
-
-            endX= e.pageX || e.originalEvent.changedTouches[0].pageX;
-           
-                offSetX= startX - endX;
-
-                showSlide(slideIndex);
-            
-        }
-        
-    });
-
-
+    // Cambio automático de diapositivas
     setInterval(() => {
-
-        if (!isDragging) {
-
-            slideIndex = (slideIndex+ 1) % totalSlides;
-
-            showSlide(slideIndex);
-
-            updateDots(slideIndex);
-
-        }
-        
+        slideIndex = (slideIndex + 1) % totalSlides;
+        showSlide(slideIndex);
+        updateDots(slideIndex);
     }, 5000);
-
 });
+
 
 //-----------------------------------------------------------------
 
@@ -1164,4 +1032,105 @@ $(document).ready(() =>{
 
 //-----------------------------------------------------------------
 
+// ACTUALIZAR PRODUCTOS VISIBLES
+document.getElementById("categoria").addEventListener("change", function(event) {
+    let formData = new FormData();
+    formData.set("categoria", this.value);
 
+    fetch("actualizarProductosMostrados.php", { 
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json()) 
+    .then(data => {
+        console.log("Respuesta del servidor:", data);
+
+        const container = document.querySelector('.container-gallery');
+        container.innerHTML = ''; // Limpiar contenido previo
+
+        if (data.success && data.productos.length > 0) {
+            data.productos.forEach(producto => {
+                const productoHTML = `
+                    <div class="gallery-photo" style="background-image:url('${producto.ruta_imagen}')">
+                        <div class="photo-content">
+                            <h3 class="title-products">
+                                <span>${producto.nombre}</span>
+                            </h3>   
+                            <p class="content-products">${producto.descripcion}</p>
+                        </div>    
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', productoHTML);
+            });
+
+            // VOLVER A ASOCIAR EVENTOS A LOS NUEVOS ELEMENTOS
+            agregarEventos();
+        } else {
+            container.innerHTML = '<p>No se encontraron productos.</p>';
+        }
+    })
+    .catch(error => console.error("Error en fetch:", error));
+});
+
+// FUNCIÓN PARA ASOCIAR EVENTOS NUEVAMENTE
+function agregarEventos() {
+     
+    $(".gallery-photo").hover(
+
+        function () {
+ 
+            $(this).css({
+
+                '--before-bg-color': 'rgba(0, 0, 0, 0.856)'
+            });
+
+            $(this).find(".photo-content").addClass("active");
+
+            $(this).find(".photo-content .title-products span").animate({
+
+                bottom: 0,
+                opacity:1
+
+            },500);
+
+            $(this).find(".photo-content .content-products").animate({
+
+                bottom: 0,
+                opacity:1
+
+            },500);
+
+        },
+
+        function () {
+
+       
+            $(this).css({
+
+                '--before-bg-color': 'rgba(0, 0, 0, 0)'
+
+            });
+
+            $(this).find(".photo-content").removeClass("active");
+
+            $(this).find(".photo-content .title-products span").animate({
+
+                bottom: "-10%",
+                opacity:0
+
+            },500);
+
+            $(this).find(".photo-content .content-products").animate({
+
+                bottom: "-10%",
+                opacity:0
+
+            },500);
+        }
+    );
+
+
+}
+
+
+//-----------------------------------------------------------------

@@ -699,8 +699,15 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['coments']))
 
                                         while ($row= $stmt->fetch()) {
                                             
-                     
+                                            if ($row["id"]==2) {
+
+                                                echo "<option value='".$row["id"]."' selected>".$row["nombre"]."</option>";
+                                              
+                                            }else{
                                                 echo "<option value='".$row["id"]."'>".$row["nombre"]."</option>";
+                                            }
+                                                
+
                                             
 
                                         }
@@ -724,9 +731,9 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['coments']))
 
                         try {
 
-                            $stmt=$conn->prepare(Constantes::LIST_PRODUCTOS);
+                            $stmt=$conn->prepare(Constantes::GET_PRODUCTO_BY_CATEGORIA);
 
-                            $stmt->execute();
+                            $stmt->execute([2]);
 
                             while ($row= $stmt->fetch()) {
 
