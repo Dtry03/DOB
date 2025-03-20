@@ -1046,7 +1046,8 @@ document.getElementById("categoria").addEventListener("change", function(event) 
         console.log("Respuesta del servidor:", data);
 
         const container = document.querySelector('.container-gallery');
-        container.innerHTML = ''; // Limpiar contenido previo
+        container.style.display = "grid";
+        container.innerHTML = ''; 
 
         if (data.success && data.productos.length > 0) {
             data.productos.forEach(producto => {
@@ -1066,7 +1067,10 @@ document.getElementById("categoria").addEventListener("change", function(event) 
             // VOLVER A ASOCIAR EVENTOS A LOS NUEVOS ELEMENTOS
             agregarEventos();
         } else {
-            container.innerHTML = '<p>No se encontraron productos.</p>';
+            container.innerHTML = '<p style="width:inherit;">No hay productos en stock.</p>';
+            container.style.display = "flex";
+            container.style.justifyContent = "center";
+            container.style.textAlign = "center";
         }
     })
     .catch(error => console.error("Error en fetch:", error));
